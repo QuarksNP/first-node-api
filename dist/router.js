@@ -1,0 +1,25 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const handle_input_errors_1 = require("./modules/middlewares/handle-input-errors");
+const products_1 = require("./handlers/products");
+const updates_1 = require("./handlers/updates");
+const router = (0, express_1.Router)();
+router.get('/product', products_1.getProducts);
+router.get('/product/:id', products_1.getOneProduct);
+router.put('/product/:id', (0, express_validator_1.body)('name').isString(), handle_input_errors_1.handleInputErrors, (req, res) => { });
+router.delete('/product/:id', products_1.deleteProduct);
+router.post('/product', (0, express_validator_1.body)('name').isString(), handle_input_errors_1.handleInputErrors, products_1.createProduct);
+router.get('/update', updates_1.getUpdates);
+router.get('/update/:id', updates_1.getOneUpdate);
+router.put('/update/:id', (0, express_validator_1.body)('title').optional(), (0, express_validator_1.body)('body').optional(), (0, express_validator_1.body)('version').optional(), (0, express_validator_1.body)('status').isIn(['IN_PROGRESS', 'SHIPPED', 'DEPRECATED']), updates_1.updatedUpdate);
+router.delete('/update/:id', updates_1.deletedUpdate);
+router.post('/update', (0, express_validator_1.body)('title').exists().isString(), (0, express_validator_1.body)('body').exists().isString(), (0, express_validator_1.body)('product_id').exists().isString(), updates_1.createUpdate);
+router.get('/updatepoint', () => { });
+router.get('/updatepoint/:id', () => { });
+router.put('/updatepoint/:id', () => { });
+router.delete('/updatepoint/:id', () => { });
+router.post('/updatepoint', () => { });
+exports.default = router;
+//# sourceMappingURL=router.js.map
