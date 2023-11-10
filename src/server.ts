@@ -20,11 +20,13 @@ app.post('/signin', signin)
 
 app.use((err, req, res, next) => {
 
-    if(err.type === 'auth') res.status(401).json({ message: "unauthenticated"})
-
-    if(err.type === 'input') res.status(400).json({ message: "invalid input" })
-
-    else res.status(500).json({ message: "Sorry bro, It's my fault!"})
+    if(err.type === 'auth') {
+        res.status(401).json({ message: "unauthenticated"})
+    } else if(err.type === 'input') {
+        res.status(400).json({ message: "invalid input" })
+    } else {
+        res.status(500).json({ message: "Sorry bro, It's my fault!"})
+    }
 
 })
 
