@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-   
+      
     "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     "module": "CommonJS",                                /* Specify what module code is generated. */
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
@@ -12,7 +12,8 @@
     "strict": false,
     "lib": ["esnext"],
     "esModuleInterop": true,
-    "declaration": true                               /* Skip type checking all .d.ts files. */
+    "declaration": true                             /* Skip type checking all .d.ts files. */
   },
+
   "include": ["src/**/*.ts"]
 }
